@@ -1,7 +1,6 @@
 install:
-  - mkdir -p build/outputs/aar && cp app-release.aar build/outputs/aar/
-  - mvn install:install-file \
-      -Dfile=build/outputs/aar/app-release.aar \
+  - FILE="-Dfile=app-release.aar" 
+  - mvn install:install-file $FILE \
       -DgroupId=com.github.Imprint-Tech \
       -DartifactId=imprint-sdk-android \
       -Dversion=0.0.4 \
