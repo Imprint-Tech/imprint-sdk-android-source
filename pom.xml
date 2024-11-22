@@ -5,17 +5,24 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.Imprint-Tech</groupId>
   <artifactId>imprint-sdk-android</artifactId>
-  <version>0.0.12</version>
+  <version>0.0.13</version>
   <packaging>aar</packaging>
 
   <build>
-        <plugins>
-            <plugin>
-                <groupId>com.simpligility.maven.plugins</groupId>
-                <artifactId>android-maven-plugin</artifactId>
-                <version>4.6.0</version>
-                <extensions>true</extensions>
-            </plugin>
-        </plugins>
+    <plugins>
+        <plugin>
+            <groupId>com.simpligility.maven.plugins</groupId>
+            <artifactId>android-maven-plugin</artifactId>
+            <version>4.6.0</version>
+            <extensions>true</extensions>
+            <configuration>
+                <manifest>
+                    <manifestFile>app-release/AndroidManifest.xml</manifestFile>
+                </manifest>
+                <failOnMissingManifest>false</failOnMissingManifest> <!-- Skip missing manifest -->
+                <skip>true</skip> <!-- Skip the plugin execution -->
+            </configuration>
+        </plugin>
+    </plugins>
   </build>
 </project>
