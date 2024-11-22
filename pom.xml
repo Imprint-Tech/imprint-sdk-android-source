@@ -6,5 +6,4 @@
   <groupId>com.github.Imprint</groupId>
   <artifactId>test</artifactId>
   <version>0.0.16</version>
-  <packaging>aar</packaging>
 </project>
