@@ -5,6 +5,6 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.github.Imprint-Tech</groupId>
   <artifactId>imprint-sdk-android</artifactId>
-  <version>0.0.2</version>
+  <version>0.0.1</version>
   <packaging>aar</packaging>
 </project>
