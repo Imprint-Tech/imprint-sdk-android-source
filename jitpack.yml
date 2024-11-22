@@ -1,6 +1,6 @@
 install:
-  - FILE="app-release.aar" 
-  - mvn install:install-file -Dfile=$FILE \
+  - mvn install:install-file \
+      -Dfile=app-release.aar \
       -DgroupId=com.github.Imprint-Tech \
       -DartifactId=imprint-sdk-android \
       -Dversion=0.0.6 \
