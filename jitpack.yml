@@ -5,6 +5,7 @@ install:
       -Dfile=app-release.aar \
       -DgroupId=com.github.Imprint-Tech \
       -DartifactId=imprint-sdk-android \
-      -Dversion=0.0.14 \
+      -Dversion=0.0.15 \
       -Dpackaging=aar \
-      -DpomFile=pom.xml
+      -DpomFile=pom.xml \
+      -DgeneratePom=true
