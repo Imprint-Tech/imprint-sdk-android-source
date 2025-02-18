@@ -1,0 +1,74 @@
+## Installation
+
+### Step 1: Add to app-level `build.gradle` and sync project to gradle
+```
+repositories {     
+    ...     
+    maven { url 'https://jitpack.io' }     
+    ...
+}
+
+dependencies {     
+    implementation 'com.github.Imprint-Tech:imprint-sdk-android-source:<version>'
+}
+```
+
+## Implementation
+### 1. Import the SDK
+```Kotlin
+import co.imprint.imprintsdk.application.Imprint
+```
+
+### 2. Configuration
+Create an instance of `ImprintConfiguration` with your `clientSecret`, `partnerReference` and `environment`, then assign additional optional fields as needed.
+
+```Kotlin
+val configuration = ImprintConfiguration(
+  clientSecret = "client_secret",
+  partnerReference: "partner_reference",
+  environment = ImprintConfiguration.Environment.SANDBOX,
+)
+```
+
+### 3. Define the completion handler
+Define the completion handler `onCompletion` to manage the terminal states when the application flow ends.
+
+```Kotlin
+val onCompletion =
+      { state: ImprintConfiguration.CompletionState, metadata: Map<String, String>? ->
+        val metadataInfo = metadata?.toString() ?: "No metadata"
+        val resultText = when (state) {
+          ImprintConfiguration.CompletionState.OFFER_ACCEPTED -> {
+            "Offer accepted\n$metadataInfo"
+          }
+          ImprintConfiguration.CompletionState.REJECTED -> {
+            "Application rejected\n$metadataInfo"
+          }
+          ImprintConfiguration.CompletionState.ABANDONED -> {
+            "Application abandoned"
+          }
+          ImprintConfiguration.CompletionState.ERROR -> {
+            "Error occured\n$metadataInfo"
+          }
+        }
+        Log.d("Application result:", resultText)
+      }
+```
+
+### 4. Start the Application flow
+Once you have configured the `ImprintConfiguration`, initiate the application flow by calling `ImprintApp.startApplication`. This will start within a new Activity.
+
+```Kotlin
+fun startApplication(
+    context: Context,
+    configuration: ImprintConfiguration,
+    onCompletion: (ImprintConfiguration.CompletionState, Map<String, String>?) -> Unit,
+  )
+```
+
+
+`context`: The context from which the application process will be presented
+
+`configuration`: The previously created ImprintConfiguration object containing your API key and completion handler
+
+`onCompletion`: The completion handler of the flow
