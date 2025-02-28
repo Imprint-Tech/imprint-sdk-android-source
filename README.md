@@ -35,7 +35,7 @@ Define the completion handler `onCompletion` to manage the terminal states whe
 
 ```Kotlin
 val onCompletion =
-      { state: ImprintConfiguration.CompletionState, metadata: Map<String, String>? ->
+      { state: ImprintConfiguration.CompletionState, metadata: Map<String, String?>? ->
         val metadataInfo = metadata?.toString() ?: "No metadata"
         val resultText = when (state) {
           ImprintConfiguration.CompletionState.OFFER_ACCEPTED -> {
@@ -62,7 +62,7 @@ Once you have configured the `ImprintConfiguration`, initiate the application f
 fun startApplication(
     context: Context,
     configuration: ImprintConfiguration,
-    onCompletion: (ImprintConfiguration.CompletionState, Map<String, String>?) -> Unit,
+    onCompletion: (ImprintConfiguration.CompletionState, Map<String, String?>?) -> Unit,
   )
 ```
 
