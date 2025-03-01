@@ -37,7 +37,7 @@ Define the completion handler `onCompletion` to manage the terminal states whe
 val onCompletion =
       { state: ImprintConfiguration.CompletionState, metadata: Map<String, String?>? ->
         val metadataInfo = metadata?.toString() ?: "No metadata"
-        val resultText = when (state) {
+        val result = when (state) {
           ImprintConfiguration.CompletionState.OFFER_ACCEPTED -> {
             "Offer accepted\n$metadataInfo"
           }
@@ -51,7 +51,7 @@ val onCompletion =
             "Error occured\n$metadataInfo"
           }
         }
-        Log.d("Application result:", resultText)
+        Log.d("Application result:", result)
       }
 ```
 
